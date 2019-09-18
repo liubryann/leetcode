@@ -13,13 +13,27 @@ struct TreeNode
     struct TreeNode *right;
 };
 
-int main()
+void dfs(struct TreeNode *root, int L, int R, int *sum)
 {
-    return 0;
+    if (root == NULL)
+    {
+        return;
+    }
+
+    dfs(root->left, L, R, sum);
+    if (root->val >= L && root->val <= R)
+    {
+        *sum += root->val;
+    }
+    dfs(root->right, L, R, sum);
 }
 
 int rangeSumBST(struct TreeNode *root, int L, int R)
 {
     int sum;
+    int *p_sum = &sum;
+
+    dfs(root, L, R, p_sum);
+
     return sum;
 }
