@@ -1,0 +1,16 @@
+def repeatedString(s, n):
+    count = 0
+    fullCount = 0
+
+    for i in s:
+        if i == 'a':
+            count += 1 
+            
+    fullCount = count * (n // len(s))
+    j = n % len(s) 
+    
+    for k in range(j):
+        if s[k] == 'a':
+            fullCount += 1
+            
+    return fullCount
